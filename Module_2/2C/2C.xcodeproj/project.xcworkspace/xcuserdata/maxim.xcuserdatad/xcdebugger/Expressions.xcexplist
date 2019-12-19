@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "suff_array::suff_array(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt; const&amp;):main.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "find_k_substring(suff_array&amp;, std::__1::vector&lt;int, std::__1::allocator&lt;int&gt; &gt;&amp;, std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt; const&amp;, long long):main.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "total.size()">
+            </PersistentString>
+            <PersistentString
+               value = "text.size()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
