@@ -49,7 +49,7 @@ struct State {
     bool white_turn;
     uint32_t count;
     uint8_t flag = neutral;
-    State(Position QW, Position KB, bool white_turn, int32_t count, uint8_t flag):QW(QW), KB(KB), count(count),
+    State(Position QW, Position KB, bool white_turn, int32_t count, uint8_t flag):QW(QW), KB(KB), count(count), white_turn(white_turn),
     flag(flag) {}
     int toInt() const {
         return ((white_turn ? 0 : desk_positions) + 64 * (8 * (QW.first - 1) + QW.second - 1) + 8 * (KB.first - 1) + KB.second - 1);
@@ -215,16 +215,6 @@ private:
         if (state.white_turn) {
             return;
         }
-        std::vector<std::pair<int, int>> directions {
-        std::make_pair(0, 1),
-        std::make_pair(0, -1),
-        std::make_pair(1, 0),
-        std::make_pair(-1, 0),
-        std::make_pair(1, 1),
-        std::make_pair(1, -1),
-        std::make_pair(-1, -1),
-        std::make_pair(-1, 1)
-        };
         for (auto direction : directions) {
             for (int i = 1; i <= 8; i++) {
                 Position position(state.QW.first + direction.first * i, state.QW.second + direction.second * i);
@@ -250,16 +240,6 @@ private:
         if (!state.white_turn) {
             return;
         }
-        std::vector<std::pair<int, int>> directions {
-        std::make_pair(0, 1),
-        std::make_pair(0, -1),
-        std::make_pair(1, 0),
-        std::make_pair(-1, 0),
-        std::make_pair(1, 1),
-        std::make_pair(1, -1),
-        std::make_pair(-1, -1),
-        std::make_pair(-1, 1)
-        };
         for (auto direction: directions) {
             Position position(state.KB.first + direction.first, state.KB.second + direction.second);
             State newDesk(state.QW, position, !state.white_turn, inf, neutral);

@@ -2,7 +2,7 @@
 #include <vector>
 #include <string>
 #include <map>
-
+#include <stack>
 
 
 const std::string Dict = "abcdefghijklmnopqrstuvwxyz";
@@ -35,7 +35,22 @@ public:
     Node<TChar>* get_up();
     void add_pattern(std::string, int);
     void process_text(std::string, const std::vector<int>&, std::string);
-
+    ~Trie() {
+            std::stack<Node<TChar>*> stack_;
+            stack_.push(&cur_node);
+            while(!stack_.empty()) {
+                    Node<TChar>* node = stack_.top();
+                    if (node.son.size() == 0) {
+                            delete node;
+                            stack_.pop();
+                    }
+                    else {
+                            for (auto nodes : node.son) {
+                                    stack_.push(nodes.first);
+                            }
+                    }
+            }
+    }
 };
 
 
@@ -58,7 +73,7 @@ struct Node {
         }
     }
     std::vector<int> terminal_patter_number;
-
+    
     ~Node() = default;
 
 };
